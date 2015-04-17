@@ -3,9 +3,6 @@ __author__ = 'pushkar'
 from django.contrib import admin
 from rango.models import Company, StockPrice
 
-# class TickerInline(admin.StackedInline):
-#     model = Ticker
-
 class StockPriceInline(admin.StackedInline):
     model = StockPrice
     extra = 1

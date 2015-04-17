@@ -12,7 +12,17 @@
 
 <h1>RANGO - The Stocks App </h1>
 
-<p>Hello World, I am under construction</p>
+<p>
+    {% if companies %}
+        <ul>
+            {% for company in companies %}
+            <li>{{ company.name }} - ${{ company.currentPrice }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>Add Companies to your list</strong>
+    {% endif %}
+</p>
 
 <strong>{{ boldmessage }}</strong><br />
 
