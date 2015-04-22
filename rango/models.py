@@ -9,8 +9,14 @@ class Company(models.Model):
         verbose_name_plural = "Companies"
 
     def currentPrice(self):
-        b = self.stockprice_set.order_by('-pk')[0]
-        return b.price
+        # Check if there are any recorded prices for a company
+        # If Prices are found, return the latest price or return 0
+        if self.stockprice_set.count():
+            b = self.stockprice_set.order_by('-pk')[0]
+            current_price = b.price
+        else:
+            current_price = 0
+        return current_price
 
     def __unicode__(self):
         return self.name

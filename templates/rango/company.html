@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% load static %} <!-- New line -->
+
+<html>
+<head>
+    <title>TANGO</title>
+</head>
+
+<body>
+<img src="{% static "icon.jpg" %}" alt="Picture of Rango"  width="90" height="160" />
+<h1>{{ company.name }}</h1>
+{% if company %}
+    {% if prices %}
+        <ul>
+        {% for price in prices %}
+            <li>{{ price.time }} - {{ price.price }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>For {{ company.name }}: No Prices Found</strong>
+    {% endif %}
+{% else %}
+    <strong>{{ ticker }} not listed here</strong>
+{% endif %}
+</body>

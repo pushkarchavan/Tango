@@ -16,7 +16,7 @@
     {% if companies %}
         <ul>
             {% for company in companies %}
-            <li>{{ company.name }} - ${{ company.currentPrice }}</li>
+            <li><a href="/rango/company/{{ company.url }}">{{ company.name }}</a> - <strong>${{ company.currentPrice }}</strong></li>
             {% endfor %}
         </ul>
     {% else %}
