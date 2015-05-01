@@ -10,3 +10,9 @@ class CompanyForm (forms.ModelForm):
     class Meta:
         model = Company
 
+class StockPriceForm(forms.ModelForm):
+    price = forms.DecimalField(max_digits=6, decimal_places=2, help_text="0000.00")
+
+    class Meta:
+        model = StockPrice
+
