@@ -10,7 +10,7 @@ class Company(models.Model):
 
     def currentPrice(self):
         # Check if there are any recorded prices for a company
-        # If Prices are found, return the latest price or return 0
+        # If Prices are found, return the latest price or return
         if self.stockprice_set.count():
             b = self.stockprice_set.order_by('-pk')[0]
             current_price = b.price
