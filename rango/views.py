@@ -3,6 +3,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from rango.models import Company, StockPrice
+from rango.forms import CompanyForm, StockPriceForm
 
 def index(request):
     context = RequestContext(request)
@@ -43,3 +44,24 @@ def company(request, company_ticker_url):
         pass
 
     return render_to_response('rango/company.html', context_dict, context)
+
+def add_company(request):
+    context = RequestContext(request)
+
+    # HTTP Post request ?
+    if request.method == 'POST':
+        form = CompanyForm(request.POST)
+
+        # Valid Form ?
+        if form.is_valid():
+            # Commit data to database
+            form.save(commit=True)
+
+            # Call the Homepage (index)
+            return  index(request)
+        else:
+            print form.errors
+    else:
+        form = CompanyForm()
+
+    return  render_to_response('rango/add_company.html', {'form':form}, context)
